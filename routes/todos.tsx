@@ -2,7 +2,8 @@
 /** @jsxImportSource https://esm.sh/react@18.2.0 */
 
 import { Head, useData } from "aleph/react";
-import {Box, Stack, Tag, Button, Flex, Input} from "@chakra-ui/react";
+import {Box, Stack, Tag, Button, Flex, Input, IconButton} from "@chakra-ui/react";
+import { DeleteIcon } from '@chakra-ui/icons';
 import { useState } from "react";
 
 type TodoItem = {
@@ -81,15 +82,27 @@ export default function Todos() {
     setText("");
   };
 
+  const handleDelete = async (id: number) => {
+    await mutation.delete({ id }, { replace: true });
+  }
+
   return (
     <Flex justify="center">
       <Box>
         <Stack spacing={4} mb={6}>
           {data.todos.map((todo) => (
-            <Box key={todo.id}>
-              <Box>{todo.message}</Box>
-              <Tag>{todo.completed ? "completed" : "not completed"}</Tag>
-            </Box>
+            <Stack key={todo.id} direction="row" spacing={4}>
+              <IconButton
+                onClick={() => handleDelete(todo.id)}
+                aria-label="Search database"
+                bg="red.400"
+                icon={<DeleteIcon color="white" />}
+              />
+              <Stack>
+                <Box>{todo.message}</Box>
+                <Tag>{todo.completed ? "completed" : "not completed"}</Tag>
+              </Stack>
+            </Stack>
           ))}
         </Stack>
 
@@ -102,7 +115,7 @@ export default function Todos() {
           />
           <Button
             onClick={handleSubmit}
-            colorScheme="purple"
+            colorScheme="teal"
             flexShrink={0}
             variant="solid"
           >

@@ -12,7 +12,8 @@
     "react": "https://esm.sh/react@18.2.0",
     "react-dom": "https://esm.sh/react-dom@18.2.0",
     "react-dom/": "https://esm.sh/react-dom@18.2.0/",
-    "@chakra-ui/react": "https://esm.sh/v86/@chakra-ui/react@2.2.1"
+    "@chakra-ui/react": "https://esm.sh/v86/@chakra-ui/react@2.2.1",
+    "@chakra-ui/icons": "https://esm.sh/v86/@chakra-ui/icons@2.0.2"
   },
   "scopes": {}
 }
